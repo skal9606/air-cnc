@@ -6,6 +6,7 @@ class ChargesController < ApplicationController
 
   def create
 
+# extra
     # STRIPE
     # Amount in cents
     @amount = 500
