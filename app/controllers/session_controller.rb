@@ -8,7 +8,7 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Succesful login, welcome back"
       # Redirects to the intended url or the root path
-      redirect_to(session[:intended_url] || user_path(user))
+      redirect_to houses_path
       session[:intended_url] = nil
     else
       flash.now[:error] = "Email or password incorrect"

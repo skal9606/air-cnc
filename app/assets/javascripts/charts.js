@@ -29,15 +29,15 @@ var createChart = function (){
           }]
       }
   });
-  $ctx.css("height","300px");
-  $ctx.css("width","600px");
+  $ctx.css("max-height","300px");
+  $ctx.css("max-width","600px");
 };
 
 //STEP 3
   //Retrieve prices and order them
 var orderPrices = function (d){
 
-  for (var i = 0; i < 4; i+=1){
+  for (var i = 0; i < 6; i+=1){
       price = d[i].price;
       allPrices.push(price);
       console.log(allPrices);

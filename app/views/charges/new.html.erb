@@ -1,4 +1,4 @@
-<h2>Booking summary</h2>
+<h3>Booking summary</h3>
 
 <ul>
 <li>Booking name: <%= @booking_summary.name %></li>
@@ -17,7 +17,7 @@
 <br>
 
 <!-- STRIPE -->
-<h2>Pay here</h2>
+
 
 <%= form_tag charges_path do %>
   <article>
@@ -26,9 +26,6 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <label class="amount">
-      <span>Amount: $5.00</span>
-    </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

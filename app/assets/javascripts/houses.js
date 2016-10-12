@@ -69,17 +69,20 @@ var getBookings = function(){
 //STEP 1
   //Event handler
 $(document).on("turbolinks:load",function(){
+
+
   var myTimer;
   var orderTimer = function(){
       myTimer = window.setInterval(function(){
         getBookings();
-      },4000);
+      },2000);
   };
+  orderTimer();
 
-  $("#show-all-bookings").on("click",orderTimer);
-
-  $("#stop-all-bookings").on("click",function(){
-    console.log("Stopping AJAX loading bookings");
-    window.clearInterval(myTimer);
-  });
+  // $("#show-all-bookings").on("click",orderTimer);
+  //
+  // $("#stop-all-bookings").on("click",function(){
+  //   console.log("Stopping AJAX loading bookings");
+  //   window.clearInterval(myTimer);
+  // });
 });
