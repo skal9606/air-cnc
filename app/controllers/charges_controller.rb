@@ -6,7 +6,6 @@ class ChargesController < ApplicationController
 
   def create
 
-# extra
     # STRIPE
     # Amount in cents
     @amount = 500
@@ -23,19 +22,15 @@ class ChargesController < ApplicationController
       :currency    => 'aud'
     )
 
+    #MAILER
     if charge.present?
       @user = @current_user
       UserMailer.welcome(@user).deliver_now
     end
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
-  end
-
-
-
-  #MAILER
-
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path
+    end
 
 end
