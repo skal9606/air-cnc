@@ -2,7 +2,7 @@
 
 <!-- CHART.JS DISPLAY -->
 <h5>Compare prices across our listings!</h5>
-<button id="compare-prices">Click me</button>
+<button class="button-primary" id="compare-prices">Click me</button>
 <canvas id="myChart"></canvas>
 <br>
 <hr>
@@ -14,7 +14,7 @@
 
 <%= form_tag(houses_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search houses within a city..." %>
-  <%= submit_tag "Search" %>
+  <%= submit_tag "Search", :class => "button-primary" %>
 <% end %>
 
 <% unless @houses.present? %>
