@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+
   def new
     @user = @current_user
     @booking_summary = @user.bookings.last
@@ -23,7 +24,8 @@ class ChargesController < ApplicationController
     )
 
     #MAILER
-    if charge.present?
+    @order_status = "Paid"
+    if @order_status == "Paid"
       @user = @current_user
       UserMailer.welcome(@user).deliver_now
     end

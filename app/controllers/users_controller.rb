@@ -18,8 +18,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "User was successfully created"
       session[:user_id] = @user.id
-      # # The line below is the only additional line we need in our Users controller.
-      # UserMailer.welcome(@user).deliver_now
+
       format.html { redirect_to houses_path, notice: 'User was successfully created.' }
       format.json { render :show, status: :created, location: @user }
     else
