@@ -1,0 +1,36 @@
+<h2>This is the list of all houses</h2>
+
+<!-- CHART.JS DISPLAY -->
+<hr>
+<button id="compare-prices">Compare prices!</button>
+<canvas id="myChart"></canvas>
+
+<!-- SEARCH FOR HOUSES  -->
+<hr>
+<%= form_tag(houses_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Houses" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% unless @houses.present? %>
+  <p>There are no houses in the city of "<%= params[:search] %>" </p>
+<% end %>
+
+
+<!-- HOUSE DISPLAY -->
+<hr>
+<ul>
+  <% @houses.each do |house| %>
+
+      <span><em><%= link_to(house.name, house_path(house)) %></em></span>
+      <br>
+      <%= image_tag(house.image1)%>
+      <li><%= house.address %></li>
+      <div><% house.latitude %></div>
+      <div><% house.longitude %></div>
+      <li>Price per night: <%= number_to_currency(house.price) %></li>
+      <li><em><%= house.blurb %></em></li>
+      <br>
+      <hr>
+  <% end %>
+</ul>

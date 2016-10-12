@@ -1,0 +1,159 @@
+<h2>This is the page for: <%= @house.name %> </h2>
+
+<!-- IMAGE CAROUSEL -->
+<div class="autoplay">
+  <div>
+    <%= image_tag(@house.image1, :class => "autoplay")%>
+  </div>
+  <div>
+    <%= image_tag(@house.image2, :class => "autoplay")%>
+  </div>
+  <div>
+    <%= image_tag(@house.image3, :class => "autoplay")%>
+  </div>
+  <div>
+    <%= image_tag(@house.image4, :class => "autoplay")%>
+  </div>
+  <div>
+    <%= image_tag(@house.image5, :class => "autoplay")%>
+  </div>
+</div>
+
+
+
+
+
+<!-- HOUSE DETAILS -->
+<hr>
+<h3>Details</h3>
+<ul>
+  <li><em><%= @house.blurb %></em></li>
+  <li><%= @house.address %></li>
+  <li><div id="latitude"><%= @house.latitude %></div></li>
+  <li><div id="longitude"><%= @house.longitude %></div></li>
+  <li>Availability for: <%= @house.about %></li>
+  <li>Price per night: <%= number_to_currency(@house.price) %></li>
+  <li>Amenities available: <%= @house.amenities %></li>
+  <li>Suitable for: <%= @house.house_rules %></li>
+  <br>
+</ul>
+
+
+
+
+<!-- GOOGLE MAPS EMBEDDED -->
+<hr>
+<h3>Map</h3>
+<div id="map"></div>
+<script>
+  var baseURLTwo = window.location.pathname;
+  console.log(baseURLTwo);
+
+  //STEP 3
+  var displayLocation = function(data){
+      // console.log(data.latitude);
+      // console.log(data.longitude);
+
+      var map;
+      map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: data.latitude, lng: data.longitude},
+      zoom: 12});
+      var marker = new google.maps.Marker({
+        position: {lat: data.latitude, lng: data.longitude},
+        map: map
+      });
+  };
+
+
+  //STEP 2
+  var getLocation = function(){
+      $.ajax({
+          url: baseURLTwo,
+          type: "GET",
+          dataType: "JSON"
+      }).done(displayLocation);
+  };
+
+  //STEP 1
+  $(document).on("turbolinks:load",function(){
+      getLocation();
+  });
+</script>
+
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwXoZTHL0vTglh3ntXpJHOKiMWoAeEl8I&callback=displayLocation">
+</script>
+
+
+
+
+
+
+
+<!-- COMMENTS -->
+<hr>
+<h3>Reviews</h3>
+<h4>Leave a comment:</h4>
+
+<div class="new-comment-submission">
+    <%= form_for(@comment, :remote => true, :format => :json) do |f| %>
+      <%= f.text_field :content, :class => "create-a-comment"%>
+      <%= f.hidden_field :house_id, value:@house.id %>
+      <%= f.submit %>
+    <% end %>
+</div>
+
+<ul>
+  <div class="new-comment-display"></div>
+  <% @house.comments.each do |comment| %>
+    <li>
+        <%= comment.content %>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+
+
+<!-- BOOK NOW -->
+<hr>
+<br>
+<h4>Book now!</h4>
+
+<%= form_for(@booking) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :required => true%>
+  </p>
+  <p>
+    <%= f.label "Start date (YYYY/MM/DD)" %><br>
+    <%= f.text_field :start_date, :required => true %>
+  </p>
+  <p>
+    <%= f.label "End date (YYYY/MM/DD)" %><br>
+    <%= f.text_field :end_date, :required => true %>
+  </p>
+  <p>
+    <%= f.label :guests %><br>
+    <%= f.text_field :guests, :required => true %>
+  </p>
+    <%= f.hidden_field :user_id, value:@user.id %>
+    <%= f.hidden_field :house_id, value:@house.id %>
+  <p>
+    <%= f.submit 'Submit', :class => 'btn' %>
+  </p>
+<% end %>
+
+
+
+
+<!-- CALENDAR SHOWING BOOKINGS -->
+<hr>
+<h3>Current bookings</h3>
+<button id="show-all-bookings">Show all bookings</button>
+<button id="stop-all-bookings">Stop all bookings</button>
+
+<div class="booking-display">
+
+</div>
