@@ -56,9 +56,9 @@ var bookingDisplay = function(data){
 
 //STEP 2
   //AJAX request
-var baseURL = window.location.pathname;
 // console.log(baseURL);
 var getBookings = function(){
+  var baseURL = window.location.pathname;
   $.ajax({
     url: baseURL,
     type: "GET",
@@ -75,7 +75,7 @@ $(document).on("turbolinks:load",function(){
   var orderTimer = function(){
       myTimer = window.setInterval(function(){
         getBookings();
-      },2000);
+      },4000);
   };
   orderTimer();
 

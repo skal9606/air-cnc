@@ -29,10 +29,10 @@ $(document).on("turbolinks:load", function() {
 
   });
 
-  // $('.single-item-rtl').slick({
-  //   rtl: true
-  // });
-  //
-  // $('.slick-prev').html('<');
-  //      $('.slick-next').html('>');
+  $('.single-item-rtl').slick({
+    rtl: true
+  });
+
+  $('.slick-prev').html('<');
+       $('.slick-next').html('>');
 });

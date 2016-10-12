@@ -23,7 +23,7 @@ var createChart = function (){
                   'rgba(255, 99, 132, 0.2)'
               ],
               borderColor: [
-                  'rgba(255,99,132,1)'
+                  'rgba(255, 99, 132, 0.2)'
               ],
               borderWidth: 1
           }]
@@ -36,17 +36,18 @@ var createChart = function (){
 //STEP 3
   //Retrieve prices and order them
 var orderPrices = function (d){
-
-  for (var i = 0; i < 6; i+=1){
+  allPrices = [];
+  allLabels = [];
+  for (var i = 0; i < d.length; i+=1){
       price = d[i].price;
       allPrices.push(price);
-      console.log(allPrices);
+      // console.log(allPrices);
 
       housename = d[i].name;
       allLabels.push(housename);
-      console.log(allLabels);
+      // console.log(allLabels);
   }
-  allPrices = allPrices.sort(function (a, b) {  return a - b;  });
+  // allPrices = allPrices.sort(function (a, b) {  return a - b;  });
   createChart();
 };
 
@@ -67,5 +68,5 @@ var getPrices = function(){
 
 //STEP 1
 $(document).on("turbolinks:load",function(){
-  $("#compare-prices").on("click",getPrices);
+  $("#compare-prices").one("click",getPrices);
 });

@@ -47,6 +47,10 @@
 <h5>Map</h5>
 <div id="map"></div>
 <br>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwXoZTHL0vTglh3ntXpJHOKiMWoAeEl8I&callback=displayLocation">
+</script>
+
 <script>
   var baseURLTwo = window.location.pathname;
   console.log(baseURLTwo);
@@ -80,11 +84,6 @@
   $(document).on("turbolinks:load",function(){
       getLocation();
   });
-</script>
-
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwXoZTHL0vTglh3ntXpJHOKiMWoAeEl8I&callback=displayLocation">
 </script>
 
 
