@@ -23,13 +23,6 @@ class ChargesController < ApplicationController
       :currency    => 'aud'
     )
 
-    #MAILER
-    @order_status = "Paid"
-    if @order_status == "Paid"
-      @user = @current_user
-      UserMailer.welcome(@user).deliver_now
-    end
-
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
