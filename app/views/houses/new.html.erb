@@ -1,4 +1,4 @@
-<h2>This is the page to create a new house</h2>
+<h3>Upload a profile of your house below and start earning big!</h3>
 
 <%= form_for(@house) do |f| %>
   <p>
@@ -10,13 +10,25 @@
     <%= f.text_field :address, :required => true %>
   </p>
   <p>
+    <%= f.label :blurb %><br>
+    <%= f.text_field :blurb, :required => true %>
+  </p>
+  <p>
+    <%= f.label :owner %><br>
+    <%= f.text_field :owner, :required => true %>
+  </p>
+  <p>
+    <%= f.label "Daily listing price" %><br>
+    <%= f.text_field :price, :required => true %>
+  </p>
+  <!-- <p>
     <%= f.label :latitude %><br>
     <%= f.text_field :latitude, :required => false %>
   </p>
   <p>
     <%= f.label :longitude %><br>
     <%= f.text_field :longitude, :required => false %>
-  </p>
+  </p> -->
   <p>
     <%= f.submit 'Submit', :class => 'btn' %>
   </p>

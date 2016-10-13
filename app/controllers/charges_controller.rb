@@ -1,5 +1,6 @@
 class ChargesController < ApplicationController
 
+
   def new
     @user = @current_user
     @booking_summary = @user.bookings.last
@@ -27,5 +28,4 @@ class ChargesController < ApplicationController
       flash[:error] = e.message
       redirect_to new_charge_path
     end
-
 end

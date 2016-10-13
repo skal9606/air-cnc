@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if @user.save
       # MAILER
       UserMailer.welcome(@user).deliver_now
-      
+
 
       flash[:success] = "User was successfully created"
       session[:user_id] = @user.id

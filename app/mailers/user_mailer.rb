@@ -3,9 +3,10 @@ class UserMailer < ApplicationMailer
 
 def welcome(user)
     @user = user
+    # @booking_sumary = booking_summary
     # @email = user.email
 
-    mail( :to => @user.email, :subject => "Your aircnc booking is attached!", :cc => "samit.c.kalra@gmail.com" )
+    mail( :to => @user.email, :subject => "Thanks for signing up!", :cc => "samit.c.kalra@gmail.com" )
 end
 
 
