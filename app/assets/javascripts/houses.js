@@ -11,6 +11,7 @@ var cell_id;
 //STEP 4
   //Create the calendar for the month
 var makeCalendar = function (){
+  $(".booking-display").html('');
   for (var i = 0; i < 31; i+=1){
       calendar_day = $("<div>").text(i+1);
       calendar_day.css("border", "1px solid black");
@@ -25,7 +26,7 @@ var makeCalendar = function (){
 
     for (var j = start_day; j <= end_day; j+=1){
       var $cell = $("#"+j);
-      $cell.css("background-color","green");
+      $cell.css("background-color","lightslategray");
     }
     // $cell_id_start = $("#"+start_day);
     // $cell_id_start.css("background-color","red");
@@ -50,8 +51,8 @@ var bookingDisplay = function(data){
     end_date = data.bookings[i].end_date;
     end_date_components = end_date.split(/-/);
     end_day = parseInt(end_date_components[2]);
-    makeCalendar();
   }
+  makeCalendar();
 };
 
 //STEP 2
@@ -69,7 +70,6 @@ var getBookings = function(){
 //STEP 1
   //Event handler
 $(document).on("turbolinks:load",function(){
-
 
   var myTimer;
   var orderTimer = function(){

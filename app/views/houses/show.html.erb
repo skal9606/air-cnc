@@ -1,6 +1,8 @@
+<br>
 <h3><%= @house.name %> </h3>
 
 <!-- IMAGE CAROUSEL -->
+<div class="container">
 <div class="autoplay">
   <div>
     <%= image_tag(@house.image1, :class => "autoplay")%>
@@ -24,10 +26,12 @@
 
 
 
+
 <!-- HOUSE DETAILS -->
 <hr>
 <h5>Details</h5>
 <ul>
+
   <li><em><%= @house.blurb %></em></li>
   <li><%= @house.address %></li>
   <div id="latitude"><% @house.latitude %></div>
@@ -44,9 +48,15 @@
 
 <!-- GOOGLE MAPS EMBEDDED -->
 <hr>
-<h5>Map</h5>
-<div id="map"></div>
 <br>
+<h5>Map</h5>
+
+
+    <div id="map"></div>
+
+
+
+
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwXoZTHL0vTglh3ntXpJHOKiMWoAeEl8I&callback=displayLocation">
 </script>
@@ -93,8 +103,10 @@
 
 
 <!-- COMMENTS -->
+
 <hr>
 <h5>Reviews</h5>
+
 <p>Leave a comment:</p>
 
 <div class="new-comment-submission">
@@ -102,11 +114,12 @@
       <%= f.text_field :content, :class => "create-a-comment"%>
       <%= f.hidden_field :house_id, value:@house.id %>
       <br>
-      <%= f.submit %>
+      <%= f.submit :class => "button-primary" %>
     <% end %>
 </div>
 
-<p>Previous comments</p>
+  <p>Previous comments</p>
+
 <ul>
   <div class="new-comment-display"></div>
   <% @house.comments.each do |comment| %>
@@ -143,7 +156,7 @@
     <%= f.hidden_field :user_id, value:@user.id %>
     <%= f.hidden_field :house_id, value:@house.id %>
   <p>
-    <%= f.submit 'Submit booking request', :class => 'btn' %>
+    <%= f.submit 'Submit booking request', :class => 'button-primary' %>
   </p>
 <% end %>
 
@@ -152,10 +165,11 @@
 
 <!-- CALENDAR SHOWING BOOKINGS -->
 <hr>
-<h5>Current bookings</h5>
+<h5>Bookings this month</h5>
 <!-- <button id="show-all-bookings">Show all bookings</button>
 <button id="stop-all-bookings">Stop all bookings</button> -->
 
 <div class="booking-display">
+</div>
 </div>
 <br>

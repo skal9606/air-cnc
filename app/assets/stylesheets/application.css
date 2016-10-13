@@ -652,6 +652,23 @@ body {
 
 #map {
   height: 300px;
-  width: 300px;
+  max-width: 800px;
   border-radius: 5px;
+}
+
+nav a {
+  color: white;
+}
+
+#aircnc {
+  font-size: 22px;
+  color: white;
+}
+
+nav {
+  color: white;
+}
+
+.search-cities {
+  width: 300px;
 }

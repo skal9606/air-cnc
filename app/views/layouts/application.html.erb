@@ -12,30 +12,37 @@
 <body>
 
   <nav>
-        <%= link_to "All houses", houses_path %>
-        <%= link_to "Add a house!", new_house_path %>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 left">
+            <%= link_to "All houses", houses_path %>
+            <%= link_to "Add a house", new_house_path %>
+          </div>
+        </div>
 
+
+        <div class="row">
+          <div class="col-12 center">
+            <span id="aircnc">airCnC</span>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-12 right">
       <% if @current_user %>
-
-          <%= link_to "View account", user_path(@current_user) %>
           Current user: <%= @current_user.name %>
+          <%= link_to "View account", user_path(@current_user) %>
           <%= link_to "Logout", logout_path, method: :delete %>
-
       <% else %>
-
         <%= link_to "Sign up", new_user_path %>
         <%= link_to "Login", login_path %>
-
       <% end %>
-
-
-      <div class="row">
-        <div class="col-12 center">
-          <span id="aircnc">airCnC</span>
-        </div>
-      </div>
-
     </div>
+  </div>
+    </div>
+
+
   </nav>
 
 
